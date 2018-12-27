@@ -1,3 +1,3 @@
 #pragma once
-static  float w = 68.0f; //Ширина платформы
-static float hh = 14.0f; //Высота платформы
+static  float w = 68.0f; // РЁРёСЂРёРЅР° РїР»Р°С‚С„РѕСЂРјС‹.
+static float hh = 14.0f; // Р’С‹СЃРѕС‚Р° РїР»Р°С‚С„РѕСЂРјС‹.
