@@ -37,8 +37,8 @@ void Game::Collision()
 		if ((pl->body.getPosition().x + 50 > (*it)->body.getPosition().x) && (pl->body.getPosition().x + 20 < (*it)->body.getPosition().x + 68)
 			&& (pl->body.getPosition().y + 70 > (*it)->body.getPosition().y) && (pl->body.getPosition().y + 70 < (*it)->body.getPosition().y + 14) && (pl->dy > 0))
 		{
-			if ((*it)->name == "EasyEnemy" || (*it)->name == "EasyEnemy2") //Åñëè ïðåäìåò â ñïèñêå - ýòî âðàã,
-			{                                                              //òî îí óíè÷òîæàåòñÿ è ïîÿâëÿåòñÿ ñî ñëó÷àéíîé êîîðäèíàòîé  
+			if ((*it)->name == "EasyEnemy" || (*it)->name == "EasyEnemy2") //Ð•ÑÐ»Ð¸ Ð¿Ñ€ÐµÐ´Ð¼ÐµÑ‚ Ð² ÑÐ¿Ð¸ÑÐºÐµ - ÑÑ‚Ð¾ Ð²Ñ€Ð°Ð³,
+			{                                                              //Ñ‚Ð¾ Ð¾Ð½ Ð¸ÑÑ‡ÐµÐ·Ð°ÐµÑ‚ Ð¸ Ð¿Ð¾ÑÐ²Ð»ÑÐµÑ‚ÑÑ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ð¹ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¾Ð¹.   
 				(*it)->body.setPosition(rand() % 400, rand() % 533);
 				
 			}
@@ -56,14 +56,16 @@ void Game::Move()
 
 	if (pl->body.getPosition().y < pl->h)
 	{
-		for (it = ent.begin(); it != ent.end(); it++) {
-			pl->body.setPosition({ pl->body.getPosition().x, pl->h }); // Êîîðäèíàòà Ó èãðîêà óñòàíîâëåíà íà 200
+		for (it = ent.begin(); it != ent.end(); it++) 
+		{
+			pl->body.setPosition({ pl->body.getPosition().x, pl->h }); // ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð° Ð£ Ð¸Ð³Ñ€Ð¾ÐºÐ° ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð° Ð½Ð° 200
 
-			(*it)->body.setPosition({ (*it)->body.getPosition().x, (*it)->body.getPosition().y - pl->dy }); // Âñå ïëàòôîðìû è ìîíñòðû ñìåùàþòñÿ ïî îñè îðäèíàò íà dy
-
-					// Êîãäà ïëàòôîðìà(èëè ìîíñòð) îêàçûâàåòñÿ íà íèæíåé ÷àñòè ýêðàíà, îíà ïåðåðèñîâûâàåòñÿ
-					// íà âåðõíåé ÷àñòè ýêðàíà ñî ñëó÷àéíîé êîîðäèíàòîé õ.
-			if ((*it)->body.getPosition().y > 533) {
+			(*it)->body.setPosition({ (*it)->body.getPosition().x, (*it)->body.getPosition().y - pl->dy }); // Ð’ÑÐµ Ð¿Ð»Ð°Ñ‚Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¸ Ð¼Ð¾Ð½ÑÑ‚Ñ€Ñ‹ ÑÐ¼ÐµÑ‰Ð°ÑŽÑ‚ÑÑ Ð¿Ð¾ Ð¾ÑÐ¸ Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚ Ð½Ð° dy
+			
+					// ÐšÐ¾Ð³Ð´Ð° Ð¿Ð»Ð°Ñ‚Ñ„Ð¾Ñ€Ð¼Ð°(Ð¸Ð»Ð¸ Ð¼Ð¾Ð½ÑÑ‚Ñ€) Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ð½Ð° Ð½Ð¸Ð¶Ð½ÐµÐ¹ Ñ‡Ð°ÑÑ‚Ð¸ ÑÐºÑ€Ð°Ð½Ð°, Ð¾Ð½Ð° Ð¿ÐµÑ€ÐµÑ€Ð¸ÑÐ¾Ð²Ñ‹Ð²Ð°ÐµÑ‚ÑÑ
+					// Ð½Ð° Ð²ÐµÑ€Ñ…Ð½ÐµÐ¹ Ñ‡Ð°ÑÑ‚Ð¸ ÑÐºÑ€Ð°Ð½Ð° ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ð¹ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¾Ð¹ Ñ….
+			if ((*it)->body.getPosition().y > 533) 
+			{
 				(*it)->body.setPosition((*it)->body.getPosition().x, 0.0f);
 				(*it)->body.setPosition((std::rand() % 400), (*it)->body.getPosition().y);
 
