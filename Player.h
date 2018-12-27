@@ -3,46 +3,32 @@
 #include "Entity.h"
 
 class Game;
-//РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РёРіСЂРѕРєР°
+//Класс, описывающий игрока
 
 class Player : public Entity {
 public:
 	friend Game;
 
 	/*
-	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. 
-	 * @param texture  РўРµРєСЃС‚СѓСЂР° РёРіСЂРѕРєР°
-	 * @param Name РРјСЏ
-	 * @param X РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ РѕСЃРё X
-	 * @param Y РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ РѕСЃРё Y
+	 * Конструктор. 
+	 * @param texture  Изображение игрока
+	 * @param Name Имя
+	 * @param X Начальная координата по оси Х
+	 * @param Y Начальная координата по оси У
 	 */
 
-	Player(sf::Texture * texture, std::string Name, float X, float Y ) : Entity(texture,  Name, X, Y){
+	Player(sf::Texture * texture, std::string Name, float X, float Y) : Entity(texture, Name, X, Y) {
 		
 	}
 
-        /*
-	 * Р¤СѓРЅРєС†РёСЏ, РѕРїРёСЃС‹РІР°СЋС‰Р°СЏ РґРІРёР¶РµРЅРёРµ РёРіСЂРѕРєР°. РџСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€ "Left" Рё "Right" РЅР° РєР»Р°РІРёР°С‚СѓСЂРµ РїРµСЂСЃРѕРЅР°Р¶ РїРµСЂРµРґРІРёРіР°РµС‚СЃСЏ РІР»РµРІРѕ Рё РІРїСЂР°РІРѕ
-	 * СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ. РРіСЂРѕРє РїРѕСЃС‚РѕСЏРЅРЅРѕРіРѕ РЅР°С…РѕРґРёС‚СЃСЏ РІ РґРІРёР¶РµРЅРёРё (РјРµРЅСЏРµС‚СЃСЏ РєРѕРѕСЂРґРёРЅР°С‚Р° Y).
+    /*
+	 * Функция, описывающая движение игрока. При нажатии клавиш "Left" и "Right" на клавиатуре персонаж передвигается
+	 * влево и вправо соответственно. Игрок постоянно находится в движении.
 	 */
 
-	void Move() {
-		const float moveSpeed = 3;
-		dy += 0.2;
-		body.move({ 0, dy });
-		if (body.getPosition().y > 480) {
-			dy = -10;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			body.move({ -moveSpeed, 0 });
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			body.move({ moveSpeed, 0 });
-
-		if (body.getPosition().x < -100) body.setPosition({ 390, body.getPosition().y });
-		if (body.getPosition().x > 390) body.setPosition({ -100, body.getPosition().y });
-	}
+	void Move();
 	
 private:
-	float  h = 200; // РџСЂРµРґРµР»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ РѕСЃРё Y
-	int Score; // РЎС‡С‘С‚ РёРіСЂРѕРєР°
+	float  h = 200; // Предельная координата по оси Y
+	int score = 0; // Счёт игрока
 };
