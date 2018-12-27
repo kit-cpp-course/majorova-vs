@@ -2,43 +2,25 @@
 #include "Entity.h"
 #include <SFML/Graphics.hpp>
 
-// Класс, описывающий "врага"
+// РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ "РІСЂР°РіР°"
 
 class Enemy : public Entity {
 public:
-	
 	/*
-	 * Конструктор.
-	 * @param texture  Изображение монстра
-	 * @param Name Имя
-	 * @param X Начальная координата по оси Х
-	 * @param Y Начальная координата по оси У
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
+	 * @param texture  РР·РѕР±СЂР°Р¶РµРЅРёРµ РјРѕРЅСЃС‚СЂР°
+	 * @param Name РРјСЏ
+	 * @param X РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ РѕСЃРё РҐ
+	 * @param Y РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° РїРѕ РѕСЃРё РЈ
 	 */
 
 	Enemy(sf::Texture * texture, std::string Name, float X, float Y) : Entity(texture, Name, X, Y) {
 
 	}
 
-
 	/*
-     * Функция, описывающая движение врага. Движение происходит по горизонтали
-     */
+         * Р¤СѓРЅРєС†РёСЏ, РѕРїРёСЃС‹РІР°СЋС‰Р°СЏ РґРІРёР¶РµРЅРёРµ РІСЂР°РіР°. Р”РІРёР¶РµРЅРёРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
+         */
 
-	void Move() {
-		
-		if (name == "EasyEnemy") //Логика движения для врага с именем "EasyEnemy"
-		{
-			dx = 2;
-			body.move({ dx, 0 });
-			if (body.getPosition().x < -100) body.setPosition({ 390, body.getPosition().y });
-			if (body.getPosition().x > 390) body.setPosition({ -100, body.getPosition().y });
-		}
-		if (name == "EasyEnemy2") 
-		{
-			dx = 2;
-			body.move({ -dx, 0 });
-			if (body.getPosition().x < -100) body.setPosition({ 390, body.getPosition().y });
-			if (body.getPosition().x > 390) body.setPosition({ -100, body.getPosition().y });
-		}
-	}	
+	void Move();
 };
