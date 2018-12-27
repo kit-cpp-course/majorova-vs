@@ -29,7 +29,9 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
+			{
 				window.close();
+			}
 		}
 		game.GamePr(pl, ent, it, window);
 		window.display();
