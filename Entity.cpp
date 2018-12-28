@@ -6,7 +6,6 @@ Entity::Entity(sf::Texture * texture, std::string Name, float X, float Y)
 	body.setPosition({ X, Y });
 	body.setTexture(texture);
 	name = Name;
-	alive = true;
 }
 
 Entity::Entity(sf::Texture * texture, std::string Name, float X, float Y, float W, float H)
@@ -15,5 +14,4 @@ Entity::Entity(sf::Texture * texture, std::string Name, float X, float Y, float 
 	body.setPosition({ X, Y });
 	body.setTexture(texture);
 	name = Name;
-	alive = true;
 }
